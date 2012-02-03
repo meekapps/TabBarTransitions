@@ -1,0 +1,8 @@
+A demonstration of how to add animation when switching between tabs in a 
+UITabBarController.
+
+To change the transition type, change self.transitionStyle in viewDidLoad.
+The available constants are "kTransitionTypeFade" and "kTransitionTypeSlide"
+
+You can also change the animation duration by changing the constant 
+"kAnimationDuration" - the default is 0.3 seconds.
