@@ -18,6 +18,7 @@
 
 #define kAnimationDuration 0.3
 
+
 @implementation ViewController
 
 @synthesize transitionStyle;
@@ -125,12 +126,12 @@
     UIImage *screenshot = [self screenshot];
     
     UIImageView *screenshotView = [[UIImageView alloc] initWithImage:screenshot];
+    screenshotView.contentMode = UIViewContentModeTop;
     [[screenshotView layer] setShadowColor:[[UIColor blackColor] CGColor]];
     [[screenshotView layer] setShadowOffset:CGSizeMake(5, 0)];
     [[screenshotView layer] setShadowOpacity:0.3f];
-    [[screenshotView layer] setShadowRadius:5.0f];
+    [[screenshotView layer] setShadowRadius:3.0f];
     [[screenshotView layer] setShouldRasterize:YES];
-    screenshotView.contentMode = UIViewContentModeTop;
     screenshotView.clipsToBounds = YES;
     screenshotView.frame = CGRectMake(-10,
                                       0,
@@ -144,7 +145,7 @@
                           delay:0.0f
                         options:UIViewAnimationCurveEaseIn
                      animations:^(void) {
-                         screenshotView.center = CGPointMake(screenshotView.center.x - self.view.bounds.size.width,
+                         screenshotView.center = CGPointMake(screenshotView.center.x - self.view.bounds.size.width - 10,
                                                              screenshotView.center.y);
                      }
                      completion:^(BOOL finished) {
@@ -157,16 +158,17 @@
     UIImage *screenshot = [self screenshot];
     
     UIImageView *screenshotView = [[UIImageView alloc] initWithImage:screenshot];
+    screenshotView.contentMode = UIViewContentModeTop;
     [[screenshotView layer] setShadowColor:[[UIColor blackColor] CGColor]];
     [[screenshotView layer] setShadowOffset:CGSizeMake(-5, 0)];
     [[screenshotView layer] setShadowOpacity:0.3f];
-    [[screenshotView layer] setShadowRadius:5.0f];
+    [[screenshotView layer] setShadowRadius:3.0f];
     [[screenshotView layer] setShouldRasterize:YES];
     screenshotView.contentMode = UIViewContentModeTop;
     screenshotView.clipsToBounds = YES; //necessarry to cut off the UITabBar of the frame
-    screenshotView.frame = CGRectMake(10, //a fix for the shadow
+    screenshotView.frame = CGRectMake(-10, //a fix for the shadow
                                       0,
-                                      self.view.frame.size.width + 20,
+                                      self.view.frame.size.width+20,
                                       self.view.frame.size.height - self.tabBar.frame.size.height);
     
     [self.view addSubview:screenshotView];
@@ -176,7 +178,7 @@
                           delay:0.0f
                         options:UIViewAnimationCurveEaseIn
                      animations:^(void) {
-                         screenshotView.center = CGPointMake(screenshotView.center.x + self.view.bounds.size.width,
+                         screenshotView.center = CGPointMake(screenshotView.center.x + self.view.bounds.size.width+10,
                                                              screenshotView.center.y);
                      }
                      completion:^(BOOL finished) {
@@ -265,7 +267,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end
